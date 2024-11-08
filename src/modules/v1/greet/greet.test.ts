@@ -1,4 +1,4 @@
-import { build } from "./utils/test-utils"
+import { build } from "../../../utils/test-utils"
 
 describe('endpoint test', () => {
     const app = build()

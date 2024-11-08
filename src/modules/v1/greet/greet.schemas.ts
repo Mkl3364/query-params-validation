@@ -1,6 +1,7 @@
 import { FastifyInstance, FastifySchema } from "fastify";
 import { buildJsonSchemas } from "fastify-zod";
 import { z } from "zod";
+import { bindExamples } from "../../../utils/swagger";
 
 export const queryStringSchema = z.object({
     name: z.string().min(1, "Name must be at least 1 character long"),
@@ -25,6 +26,13 @@ export const getGreetingSchema: FastifySchema = {
         additionalProperties: false
     }
 }
+
+bindExamples(greetSchemas, {
+    queryStringSchemaExample: {
+        name: 'Pascal',
+        age: 25
+    }
+})
 
 export type QueryStringSchema = z.infer<typeof queryStringSchema>;
 
